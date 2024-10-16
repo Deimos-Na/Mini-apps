@@ -158,4 +158,5 @@ function gameRockPaperScissors() {
     }
   }
 }
+
 //Генератор случайных чисел
