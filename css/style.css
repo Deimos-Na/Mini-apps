@@ -90,6 +90,10 @@ a {
   color: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #202027;
 }
@@ -167,6 +171,7 @@ body {
   align-items: center;
   left: 0;
   overflow: hidden;
+  position: relative;
 }
 .nav__list {
   display: flex;
@@ -178,6 +183,9 @@ body {
   align-items: center;
   -moz-column-gap: 51px;
        column-gap: 51px;
+}
+.nav__item:first-child {
+  padding-left: 51px;
 }
 .nav__item > a {
   font-size: 1.875rem;
@@ -194,6 +202,28 @@ body {
   background-size: contain;
   background-position: center;
   display: block;
+}
+.nav__progress-bar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  animation: moveProgress 10s linear infinite;
+  animation-play-state: running;
+}
+.nav__progress-bar.paused {
+  animation-duration: 20s;
+}
+@keyframes moveProgress {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .main {

@@ -1,6 +1,11 @@
 @import "reset";
 
 // Общие значения ============================
+
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	color: #202027;
 }
@@ -88,6 +93,7 @@ body {
 	align-items: center;
 	left: 0;
 	overflow: hidden;
+	position: relative;
 
 	&__list {
 		display: flex;
@@ -98,6 +104,10 @@ body {
 		display: flex;
 		align-items: center;
 		column-gap: 51px;
+
+		&:first-child {
+			padding-left: 51px;
+		}
 
 		&>a {
 			font-size: 1.875rem;
@@ -116,6 +126,32 @@ body {
 			background-size: contain;
 			background-position: center;
 			display: block;
+		}
+	}
+
+	&__progress-bar {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 100%;
+		animation: moveProgress 10s linear infinite;
+		animation-play-state: running;
+	}
+
+	&__progress-bar.paused {
+		animation-duration: 20s;
+	}
+
+	@keyframes moveProgress {
+		0% {
+			transform: translateX(0);
+		}
+
+		100% {
+			transform: translateX(-100%);
 		}
 	}
 }

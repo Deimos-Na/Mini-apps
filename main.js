@@ -2,24 +2,28 @@
 function onClickRandom() {
   const randomNumber = Math.floor(Math.random() * 100) + 1
   let playerNumber = null
-  while (true) {
-    playerNumber = +prompt('Угадай число от 1 до 100')
 
-    if (playerNumber === 0 || isNaN(playerNumber)) {
-      if (playerNumber === 0) {
-        alert('Досвидули!')
-        break
-      }
-      alert('Введи число!')
+  while (true) {
+    let input = prompt('Угадай число от 1 до 100')
+
+    if (input === null) {
+      alert('Игра была завершена :(')
+      break
+    }
+
+    playerNumber = +input
+
+    if (isNaN(playerNumber) || playerNumber < 1 || playerNumber > 100) {
+      alert('Введи число от 1 до 100.')
       continue
     }
 
     if (playerNumber > randomNumber) {
-      alert('Загаданное число меньше')
+      alert('Загаданное число меньше)')
     } else if (playerNumber < randomNumber) {
-      alert('Загаданное число больше')
+      alert('Загаданное число больше)')
     } else {
-      alert('Ты угадал!))')
+      alert('Ты угадал :)')
       break
     }
   }
@@ -29,7 +33,7 @@ function onClickRandom() {
 function onClickMathGame() {
   while (true) {
     const num1 = Math.floor(Math.random() * 10) + 11
-    const num2 = Math.floor(Math.random() * 10) + 1
+    let num2 = Math.floor(Math.random() * 10) + 1
     const operations = ['+', '-', '*', '/']
     const operation = operations[Math.floor(Math.random() * operations.length)]
 
@@ -40,19 +44,30 @@ function onClickMathGame() {
     }
 
     const task = `${num1} ${operation} ${num2}`
-
     const correctAnswer = eval(task)
 
-    const userAnswer = +prompt(`Реши задачку: ${task}`)
+    const userInput = prompt(`Реши задачку: ${task}`)
 
-    if (userAnswer === correctAnswer) {
-      alert('Правильно!')
-    } else {
-      alert(`Не правильно. Правильный ответ: ${correctAnswer}`)
+    if (userInput === null) {
+      alert('Игра была завершена :(')
+      break
     }
 
-    if (!confirm('Продолжаем?)')) {
-      alert('Досвидули)')
+    const userAnswer = Number(userInput)
+
+    if (isNaN(userAnswer)) {
+      alert('Введи число')
+      continue
+    }
+
+    if (userAnswer === correctAnswer) {
+      alert('Правильно :)')
+    } else {
+      alert(`Не правильно, правильный ответ: ${correctAnswer}`)
+    }
+
+    if (!confirm('Продолжаем?:)')) {
+      alert('Игра была завершена :(')
       break
     }
   }
@@ -61,6 +76,11 @@ function onClickMathGame() {
 // Переверни текст
 function reversedText() {
   const text = prompt('Введи текст, я его переверну')
+
+  if (text === null || text.trim() === '') {
+    alert('Игры была завершена :(')
+    return
+  }
 
   const reverseText = text.split('').reverse().join('')
 
@@ -71,7 +91,7 @@ function reversedText() {
 function quiz() {
   const quiz = [
     {
-      question: 'Какой цвет у небо?',
+      question: 'Какой цвет у неба?',
       options: ['1. Красный', '2. Синий', '3. Зеленый'],
       correctAnswer: 2,
       correctText: 'Синий',
@@ -90,22 +110,48 @@ function quiz() {
     },
   ]
 
-  let correctAnswers = 0
+  let continueGame = true
 
-  for (let i = 0; i < quiz.length; i++) {
-    const userAnswer = prompt(
-      `${quiz[i].question}\n${quiz[i].options.join('\n')}`
-    ).toLowerCase()
+  while (continueGame) {
+    let correctAnswers = 0
 
-    if (
-      Number(userAnswer) === quiz[i].correctAnswer ||
-      userAnswer === quiz[i].correctText.toLowerCase()
-    ) {
-      correctAnswers++
+    for (let i = 0; i < quiz.length; i++) {
+      const userInput = prompt(
+        `${quiz[i].question}\n${quiz[i].options.join('\n')}`
+      )
+
+      if (userInput === null) {
+        alert('Игра была завершена :(')
+        return
+      }
+
+      const userAnswer = userInput.trim().toLowerCase()
+
+      if (
+        !['1', '2', '3'].includes(userAnswer) &&
+        !quiz[i].correctText.toLowerCase().includes(userAnswer)
+      ) {
+        alert('Введи корректный ответ!')
+        i--
+        continue
+      }
+
+      if (
+        Number(userAnswer) === quiz[i].correctAnswer ||
+        userAnswer === quiz[i].correctText.toLowerCase()
+      ) {
+        correctAnswers++
+      }
     }
+
+    alert(
+      `Ты ответил правильно на ${correctAnswers} из ${quiz.length} вопросов.`
+    )
+
+    continueGame = confirm('Хочешь сыграть снова? :)')
   }
 
-  alert(`Ты ответил правильно на ${correctAnswers} из ${quiz.length} вопросов.`)
+  alert('Пока :)')
 }
 
 //Камень, ножницы, бумага
@@ -114,7 +160,14 @@ function gameRockPaperScissors() {
   const option = ['камень', 'ножницы', 'бумага']
 
   while (true) {
-    const userInput = prompt('1.камень, 2.ножницы или 3.бумага?').toLowerCase()
+    const userInput = prompt(
+      '1. Камень, 2. Ножницы или 3. Бумага?'
+    ).toLowerCase()
+
+    if (userInput === null) {
+      alert('Игра была завершена :(')
+      break
+    }
 
     let userChoice
 
@@ -151,12 +204,31 @@ function gameRockPaperScissors() {
       Я выбрал: ${computerChoice}
       `)
 
-    const againGame = confirm('Продолжим?')
+    const againGame = confirm('Хочешь сыграть снова? :)')
     if (!againGame) {
-      alert('Досвидули)')
+      alert('Пока :)')
       break
     }
   }
 }
 
-//Генератор случайных чисел
+//Генератор случайных цветов
+
+//================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const navList = document.querySelector('.nav__list')
+  const progressBar = document.querySelector('.nav__progress-bar')
+
+  const cloneList = navList.cloneNode(true)
+  progressBar.appendChild(cloneList)
+
+  progressBar.style.width = `${navList.scrollWidth}px`
+
+  progressBar.addEventListener('mouseover', () => {
+    progressBar.style.animationPlayState = 'paused'
+  })
+
+  progressBar.addEventListener('mouseout', () => {
+    progressBar.style.animationPlayState = 'running'
+  })
+})
