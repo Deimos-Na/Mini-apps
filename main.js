@@ -214,6 +214,28 @@ function gameRockPaperScissors() {
 
 //Генератор случайных цветов
 
+function getRandomColor() {
+  let letters = '0123456789ABCDEF'
+  let color = '#'
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)]
+  }
+  return color
+}
+
+const colorGameButton = document.querySelector('#game6 .mini__card-btn')
+
+colorGameButton.addEventListener('click', event => {
+  event.preventDefault()
+
+  const backgroundBlock = document.getElementById('backgroundBlock')
+  if (backgroundBlock) {
+    backgroundBlock.style.backgroundColor = getRandomColor()
+    console.log('Новый цвет:', backgroundBlock.style.backgroundColor)
+  } else {
+  }
+})
+
 //================================================
 document.addEventListener('DOMContentLoaded', () => {
   const navList = document.querySelector('.nav__list')
