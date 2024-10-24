@@ -157,7 +157,16 @@ function quiz() {
 //Камень, ножницы, бумага
 
 function gameRockPaperScissors() {
-  const option = ['камень', 'ножницы', 'бумага']
+  const options = ['камень', 'ножницы', 'бумага']
+
+  const inputMap = {
+    1: 'камень',
+    2: 'ножницы',
+    3: 'бумага',
+    камень: 'камень',
+    ножницы: 'ножницы',
+    бумага: 'бумага',
+  }
 
   while (true) {
     const userInput = prompt(
@@ -169,22 +178,14 @@ function gameRockPaperScissors() {
       break
     }
 
-    let userChoice
+    const userChoice = inputMap[userInput]
 
-    if (userInput === '1') {
-      userChoice = 'камень'
-    } else if (userInput === '2') {
-      userChoice = 'ножницы'
-    } else if (userInput === '3') {
-      userChoice = 'бумага'
-    } else if (option.includes(userInput)) {
-      userChoice = userInput
-    } else {
-      alert('Некорректный выбор')
+    if (!userChoice) {
+      alert('Некорректный выбор.')
       continue
     }
 
-    const computerChoice = option[Math.floor(Math.random() * option.length)]
+    const computerChoice = options[Math.floor(Math.random() * options.length)]
 
     let result
     if (userChoice === computerChoice) {
@@ -194,18 +195,17 @@ function gameRockPaperScissors() {
       (userChoice === 'ножницы' && computerChoice === 'бумага') ||
       (userChoice === 'бумага' && computerChoice === 'камень')
     ) {
-      result = 'Ты выиграл'
+      result = 'Ты выиграл!'
     } else {
-      result = 'Ты проиграл'
+      result = 'Ты проиграл!'
     }
 
     alert(`${result}
-      Ты выбрал: ${userChoice}
-      Я выбрал: ${computerChoice}
-      `)
+            Ты выбрал: ${userChoice}
+            Я выбрал: ${computerChoice}`)
 
-    const againGame = confirm('Хочешь сыграть снова? :)')
-    if (!againGame) {
+    const playAgain = confirm('Хочешь сыграть снова? :)')
+    if (!playAgain) {
       alert('Пока :)')
       break
     }

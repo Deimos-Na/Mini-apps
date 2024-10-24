@@ -27,32 +27,34 @@
     </header>
     <nav class="nav">
       <div class="nav__progress-bar">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game5">ВИКТОРИНА</a>
-          <span></span>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game1">УГАДАЙ ЧИСЛО</a>
-          <span></span>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game3">ПЕРЕВЕРНИ ТЕКСТ</a>
-          <span></span>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game2">ПРОСТАЯ АРИФМЕТИКА</a>
-          <span></span>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game4">КАМЕНЬ, НОЖНИЦЫ, БУМАГА</a>
-          <span></span>
-        </li>
-        <li class="nav__item">
-          <a class="nav__link-app" href="#game6">ГЕНЕРАТОР СЛУЧАЙНЫХ ЦВЕТОВ</a>
-          <span></span>
-        </li>
-      </ul>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game4">ВИКТОРИНА</a>
+            <span class="nav__stars"></span>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game1">УГАДАЙ ЧИСЛО</a>
+            <span class="nav__stars"></span>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game3">ПЕРЕВЕРНИ ТЕКСТ</a>
+            <span class="nav__stars"></span>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game2">ПРОСТАЯ АРИФМЕТИКА</a>
+            <span class="nav__stars"></span>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game5">КАМЕНЬ, НОЖНИЦЫ, БУМАГА</a>
+            <span class="nav__stars"></span>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link-app" href="#game6"
+              >ГЕНЕРАТОР СЛУЧАЙНЫХ ЦВЕТОВ</a
+            >
+            <span class="nav__stars"></span>
+          </li>
+        </ul>
       </div>
     </nav>
     <main class="main" id="backgroundBlock">
@@ -83,7 +85,7 @@
               <div class="about__card-box">
                 <p class="about__card-btn">Игра №2</p>
                 <h2 class="about__card-title">Простая арифметика</h2>
-              </div class="about__card-box">
+              </div>
             </a>
           </article>
           <article class="about__card">
@@ -133,12 +135,15 @@
               <p class="mini__card-desc">
                 Попробуй угадать случайное число от 1 до 100.
               </p>
-              <a class="button mini__card-btn" href="#" onclick="onClickRandom()">Играть!</a>
+              <button
+                class="button mini__card-btn"
+                href="#"
+                onclick="onClickRandom()"
+              >
+                Играть!
+              </button>
             </div>
-            <img
-              src="./img/mini/1.jpeg"
-              alt="Угадай число"
-            />
+            <img src="./img/mini/1.jpeg" alt="Угадай число" />
           </article>
           <article class="mini__card" id="game2">
             <div class="mini__card-content">
@@ -146,7 +151,13 @@
               <p class="mini__card-desc">
                 Попробуй решить простые арифметические задачи.
               </p>
-              <a class="button mini__card-btn" href="#" onclick="onClickMathGame()">Играть!</a>
+              <button
+                class="button mini__card-btn"
+                href="#"
+                onclick="onClickMathGame()"
+              >
+                Играть!
+              </button>
             </div>
             <img src="./img/mini/2.jpeg" alt="Простая арифметика" />
           </article>
@@ -156,7 +167,13 @@
               <p class="mini__card-desc">
                 Попробуй ввести текст, который будет перевернут.
               </p>
-              <a class="button mini__card-btn" href="#" onclick="reversedText()">Играть!</a>
+              <button
+                class="button mini__card-btn"
+                href="#"
+                onclick="reversedText()"
+              >
+                Играть!
+              </button>
             </div>
             <img src="./img/mini/3.jpeg" alt="Переверни текст" />
           </article>
@@ -166,7 +183,9 @@
               <p class="mini__card-desc">
                 Отвечай на вопросы викторины с вариантами ответов.
               </p>
-              <a class="button mini__card-btn" href="#" onclick="quiz()" >Играть!</a>
+              <button class="button mini__card-btn" href="#" onclick="quiz()">
+                Играть!
+              </button>
             </div>
             <img src="./img/mini/4.jpeg" alt="Викторина" />
           </article>
@@ -176,7 +195,13 @@
               <p class="mini__card-desc">
                 Сыграй в популярную игру против компьютера.
               </p>
-              <a class="button mini__card-btn" href="#" onclick="gameRockPaperScissors()">Играть!</a>
+              <button
+                class="button mini__card-btn"
+                href="#"
+                onclick="gameRockPaperScissors()"
+              >
+                Играть!
+              </button>
             </div>
             <img src="./img/mini/5.jpeg" alt="Камень, ножницы, бумага" />
           </article>
@@ -187,7 +212,13 @@
                 Игра, в которой при клике на кнопку фон страницы меняется на
                 случайный.
               </p>
-              <a class="button mini__card-btn" href="#" id="colorGameButton">Играть!</a>
+              <button
+                class="button mini__card-btn"
+                href="#"
+                id="colorGameButton"
+              >
+                Играть!
+              </button>
             </div>
             <img src="./img/mini/6.jpeg" alt="Генератор случайных цветов" />
           </article>
